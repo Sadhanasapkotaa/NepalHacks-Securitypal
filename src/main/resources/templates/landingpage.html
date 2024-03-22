@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en, ne" xmlns:th="http://www.thymeleaf.org">
+ 
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ 
+  <!--========== BOX ICONS ==========-->
+  <link
+    href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+    rel="stylesheet"
+  />
+ 
+  <!--========== CSS ==========-->
+  <link rel="stylesheet" th:href="@{/css/styles.css}" />
+ 
+  <title>Maatri Landing Page</title>
+</head>
+ 
+<body>
+  <!--========== SCROLL TOP ==========-->
+  <a href="#" class="scrolltop" id="scroll-top"></a>
+  <i class="bx bx-up-arrow-alt scrolltop__icon"></i>
+  </a>
+ 
+  <!--========== HEADER ==========-->
+  <header class="l-header" id="header">
+    <nav class="nav bd-container">
+      <a href="#" class="nav__logo">Maatri</a>
+ 
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li class="nav__item">
+            <i class="bx bx-home-alt nav__icon"></i>
+            <a href="index.html" class="nav__link active-link" data-lang-en="Home" data-lang-ne="गृह">Home</a>
+          </li>
+          <li class="nav__item">
+            <i class='bx bx-group nav__icon'></i>
+            <a href="appoint.html" class="nav__link" data-lang-en="Appoint" data-lang-ne="समूह">Appoint</a>
+          </li>
+          <li class="nav__item">
+            <i class="bx bx-location-plus nav__icon"></i>
+            <a href="#share" class="nav__link" data-lang-en="Location" data-lang-ne="स्थान">Location</a>
+          </li>
+          <li class="nav__item">
+            <i class="bx bx-briefcase-alt nav__icon"></i>
+            <a href="#decoration" class="nav__link" data-lang-en="Events" data-lang-ne="घटनाहरू">Events</a>
+          </li>
+          <li class="nav__item">
+            <i class="bx bx-user nav__icon"></i>
+            <a href="#accessory" class="nav__link" data-lang-en="Profile" data-lang-ne="प्रोफाइल">Profile</a>
+          </li>
+          <li class="nav__item">
+            <button onclick="toggleLanguage()" class="nav__link"><i class="bx bx-text visible nav__icon"></i></button>
+          </li>
+          <li>
+            <i class="bx bx-toggle-left change-theme" id="theme-button"></i>
+          </li>
+       
+        </ul>
+      </div>
+ 
+      <!-- <div class="nav__toggle" id="nav-toggle">
+        <i class="bx bx-grid-alt"></i>
+      </div> -->
+    </nav>
+  </header>
+ 
+  <main class="l-main">
+    <!--========== HOME ==========-->
+    <section class="home" id="home">
+      <div class="home__container bd-container bd-grid">
+        <div class="home__img">
+          <img src="img/image_1711030832636.jpg" alt="" />
+        </div>
+ 
+        <div class="home__data mb-3">
+          <h1 class="home__title" data-lang-en="Maatri" data-lang-ne="मातृ">Maatri
+          </h1>
+            <p class="home__description" data-lang-en="Send Love, Care, and Support with Maatri" data-lang-ne="मातृत्वसँग प्रेम, हेरचाह र सहयोग पठाउनुहोस्">Send Love, Care, and Support with Maatri</p>
+          <a href="signup" class="button mb-3" data-lang-en="Get Started" data-lang-ne="सुरु गर्नुहोस्">Get Started</a>
+ 
+ 
+        </div>
+       
+      </div>
+    </section>
+ 
+    <!--========== SHARE ==========-->
+    <!-- <section class="share section bd-container" id="share">
+      <div class="share__container bd-grid">
+        <div class="share__data">
+          <h2 class="section-title-center" data-lang-en="Sharing Is The Best Gift You Can Give" data-lang-ne="भाग लिने सबैभन्दा उत्कृष्ट उपहार हो जुन तपाईं दिनुहुन्छ">Sharing Is The Best Gift You Can Give </h2>
+          <p class="share__description" data-lang-en="Sharing these holidays is the best gift you can give, give a present or share your love with the people you love the most and celebrate with great happiness." data-lang-ne="यी छुट्टिहरूमा भाग लिनु उत्कृष्ट उपहार हो जुन तपाईं दिन्छौं, उपहार दिनुहोस् वा तपाईंले धेरै प्रिय व्यक्तिहरूसँग आफ्नो प्रेम साझा गर्नुहोस् र धेरै खुशीको साथ
+मनाउनुहोस्।">Sharing these holidays is the best gift you can give, give a present or share your love with the people you love the most and celebrate with great happiness.</p>
+<a href="#" class="button" data-lang-en="Send a Gift" data-lang-ne="उपहार पठाउनुहोस्">Send a Gift</a>
+</div>
+    <div class="share__img">
+      <img src="assets/img/shared.png" alt="" />
+    </div>
+  </div>
+</section>
+  -->
+<!--========== DECORATION ==========-->
+<section class="decoration section bd-container" id="decoration">
+    <h2 class="section-title" data-lang-en="Maatri - Your Partner in Maternal Health" data-lang-ne="मातृ स्वास्थ्यमा तपाईंको सहयोगी - माअन्त्री">Maatri - Your Partner in Maternal Health</h2>
+    <div class="decoration__container bd-grid">
+      <div class="decoration__data">
+        <img src="img/image_1711030878945.jpg" alt="Prenatal Care" class="decoration__img" />
+        <h3 class="decoration__title" data-lang-en="Prenatal Care" data-lang-ne="प्रसवपूर्व हेरचाह">Prenatal Care</h3>
+        <a href="#" class="button button-link" data-lang-en="Learn More" data-lang-ne="थप जान्नुहोस्">Learn More</a>
+      </div>
+     
+      <div class="decoration__data">
+        <img src="img/image_1711030832636.jpg" alt="Postnatal Care" class="decoration__img" />
+        <h3 class="decoration__title" data-lang-en="Postnatal Care" data-lang-ne="प्रसवपछाडिको हेरचाह">Postnatal Care</h3>
+        <a href="#" class="button button-link" data-lang-en="Learn More" data-lang-ne="थप जान्नुहोस्">Learn More</a>
+      </div>
+     
+      <div class="decoration__data">
+        <img src="img/image_1711030882886.jpg" alt="Doctor Consultations" class="decoration__img" />
+        <h3 class="decoration__title" data-lang-en="Doctor Consultations" data-lang-ne="डक्टर परामर्श">Doctor Consultations</h3>
+        <a href="#" class="button button-link" data-lang-en="Learn More" data-lang-ne="थप जान्नुहोस्">Learn More</a>
+      </div>
+    </div>
+  </section>
+ 
+<!--========== ACCESSORIES ==========-->
+ <section class="accessory section bd-container" id="accessory">
+ 
+    <div class="home__data">
+        <!-- <h1 class="home__title" data-lang-en="Maatri" data-lang-ne="मातृ">Maatri
+        </h1> -->
+          <!-- <p class="home__description" data-lang-en="Send Love, Care, and Support with Maatri" data-lang-ne="मातृत्वसँग प्रेम, हेरचाह र सहयोग पठाउनुहोस्">Send Love, Care, and Support with Maatri</p> -->
+        <a href="login" class="button" data-lang-en="Get Started" data-lang-ne="मातृत्वसँग प्रेम, हेरचाह र सहयोग पठाउनुहोस्">Login as Health Worker</a>
+      </div>  <!-- <h2 class="section-title" data-lang-en="New Christmas Accessories" data-lang-ne="नयाँ क्रिसमस सहायक सामग्रीहरू">New Christmas Accessories</h2>
+ 
+  <div class="accessory__container bd-grid">
+    <div class="accessory__content">
+      <img src="assets/img/accessory1.png" alt="" class="accessory__img" />
+      <h3 class="accessory__title" data-lang-en="Snow Globe" data-lang-ne="हिम ग्लोब">Snow Globe</h3>
+      <span class="accessory__category" data-lang-en="Accessory" data-lang-ne="सहायक">Accessory</span>
+      <span class="accessory__preci">$9.45</span>
+      <a href="#" class="button accessory__button"><i class="bx bx-heart"></i></a>
+    </div> -->
+ <!--
+    <div class="accessory__content">
+      <img src="assets/img/accessory2.png" alt="" class="accessory__img" />
+      <h3 class="accessory__title" data-lang-en="Candy" data-lang
+-ne="मिठाई">Candy</h3>
+<span class="accessory__category" data-lang-en="Accessory" data-lang-ne="सहायक">Accessory</span>
+<span class="accessory__preci">$2.52</span>
+<a href="#" class="button accessory__button"><i class="bx bx-heart"></i></a>
+</div>
+    <div class="accessory__content">
+      <img src="assets/img/accessory3.png" alt="" class="accessory__img" />
+      <h3 class="accessory__title" data-lang-en="Angel" data-lang-ne="एंजेल">Angel</h3>
+      <span class="accessory__category" data-lang-en="Accessory" data-lang-ne="सहायक">Accessory</span>
+      <span class="accessory__preci">$13.15</span>
+      <a href="#" class="button accessory__button"><i class="bx bx-heart"></i></a>
+    </div>
+ 
+    <div class="accessory__content">
+      <img src="assets/img/accessory4.png" alt="" class="accessory__img" />
+      <h3 class="accessory__title" data-lang-en="Sphere" data-lang-ne="गोला">Sphere</h3>
+      <span class="accessory__category" data-lang-en="Accessory" data-lang-ne="सहायक">Accessory</span>
+      <span class="accessory__preci">$4.25</span>
+      <a href="#" class="button accessory__button"><i class="bx bx-heart"></i></a>
+    </div>
+ 
+    <div class="accessory__content">
+      <img src="assets/img/accessory5.png" alt="" class="accessory__img" />
+      <h3 class="accessory__title" data-lang-en="Surprise gift" data-lang-ne="अचम्मको उपहार">Surprise gift</h3>
+      <span class="accessory__category" data-lang-en="Accessory" data-lang-ne="सहायक">Accessory</span>
+      <span class="accessory__preci">$7.99</span>
+      <a href="#" class="button accessory__button"><i class="bx bx-heart"></i></a>
+    </div>
+  </div>
+</section> -->
+ 
+<!--========== SEND GIFT ==========-->
+ 
+ 
+ </main>
+  <!--========== FOOTER ==========-->
+  <footer class="footer section">
+    <div class="footer__container bd-container bd-grid">
+      <div class="footer__content">
+        <h3 class="footer__title">
+          <a href="#" class="footer__logo">Maatri</a>
+        </h3>
+        <p class="footer__description">
+          I sent a gift and it gives <br />
+          happiness
+        </p>
+      </div>
+        <div class="footer__content">
+    <h3 class="footer__title" data-lang-en="Our Services" data-lang-ne="हाम्रा सेवाहरू">Our Services</h3>
+    <ul>
+      <li><a href="#" class="footer__link" data-lang-en="Pricing" data-lang-ne="मुल्य निर्धारण">Pricing</a></li>
+      <li><a href="#" class="footer__link" data-lang-en="Discounts" data-lang-ne="छुटहरू">Discounts</a></li>
+      <li><a href="#" class="footer__link" data-lang-en="Shipping mode" data-lang-ne="संचार मोड">Shipping mode</a></li>
+    </ul>
+  </div>
+ 
+  <div class="footer__content">
+    <h3 class="footer__title" data-lang-en="Our Company" data-lang-ne="हाम्रो कम्पनी">Our Company</h3>
+    <ul>
+      <li><a href="#" class="footer__link" data-lang-en="Blog" data-lang-ne="ब्लग">Blog</a></li>
+      <li><a href="#" class="footer__link" data-lang-en="About us" data-lang-ne="हाम्रो बारेमा">About us</a></li>
+      <li><a href="#" class="footer__link" data-lang-en="Our mission" data-lang-ne="हाम्रो मिसन">Our mission</a></li>
+    </ul>
+  </div>
+ 
+  <div class="footer__content">
+    <h3 class="footer__title">Social</h3>
+        <a href="#" class="footer__social"><i class="bx bxl-facebook-circle"></i></a>
+        <a href="#" class="footer__social"><i class="bx bxl-twitter"></i></a>
+        <a href="#" class="footer__social"><i class="bx bxl-instagram-alt"></i></a>
+      </div>
+    </div>
+ 
+    <p class="footer__copy">&#169; 2021 Maatri. All right reserved</p>
+  </footer>
+ 
+  <!--========== SCROLL REVEAL ==========-->
+  <script src="https://unpkg.com/scrollreveal"></script>
+ 
+  <!--========== MAIN JS ==========-->
+  <script src="static/js/main.js"></script>
+ 
+  <!--========== LANGUAGE TOGGLE FUNCTION ==========-->
+  <script>
+    function toggleLanguage() {
+      const elements = document.querySelectorAll('[data-lang-en], [data-lang-ne]');
+      elements.forEach(element => {
+        const enText = element.getAttribute('data-lang-en');
+        const neText = element.getAttribute('data-lang-ne');
+        if (element.textContent.trim() === enText) {
+          element.textContent = neText;
+        } else {
+          element.textContent = enText;
+        }
+      });
+    }
+  </script>
+</body>
+ 
+</html>
+ 
+ 
+ 

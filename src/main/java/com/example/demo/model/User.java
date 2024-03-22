@@ -16,7 +16,7 @@ public class User {
 	private String password;
 	private int age;
 	private String email;
-	private int citizenId;
+	private String citizenId;
 	private String status;
 	public int getId() {
 		return id;
@@ -48,18 +48,21 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getCitizenId() {
-		return citizenId;
-	}
-	public void setCitizenId(int citizenId) {
-		this.citizenId = citizenId;
-	}
+
 	public String getStatus() {
 		return status;
 	}
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	public String getCitizenId() {
+		return citizenId;
+	}
+	public void setCitizenId(String citizenId) {
+		this.citizenId = citizenId;
+	}
+	
+	
 	
 	
 	

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -13,7 +13,7 @@
     />
 
     <!--css file-->
-    <link rel="stylesheet" href="assets/css/eventdashboard.css" />
+    <link rel="stylesheet" th:href="@{/css/eventdashboard.css}" />
   </head>
   <body>
     <section class="sidebar">

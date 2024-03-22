@@ -11,4 +11,10 @@ public class generalController {
 	public String appointment() {
 		return "appointmentform.html";
 	}
+	
+	@GetMapping("/landingpage")
+	
+	public String landingpage() {
+		return "landingpage.html";
+	}
 }
