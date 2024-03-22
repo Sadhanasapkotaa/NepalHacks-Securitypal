@@ -49,4 +49,9 @@ let handleUserJoined = async (user, mediaType) => {
         user.audioTrack.play()
     }
 }
+
+let handleUserLeft = async (user) => {
+    delete remoteUsers[user.uid]
+    document.getElementById(`user-container-${user.uid}`).remove()
+}
 document.getElementById('join-btn').addEventListener('click', joinStream)
