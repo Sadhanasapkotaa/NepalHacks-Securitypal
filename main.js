@@ -9,7 +9,7 @@ let remoteUsers = {}
 let joinAndDisplayLocalStream = async () => {
 
      client.on('user-published', handleUserJoined)
-
+    client.on('user-left', handleUserLeft)
     let UID = await client.join(APP_ID, CHANNEL, TOKEN, null)
     localTracks = await AgoraRTC.createMicrophoneAndCameraTracks()
     let player = `<div class="video-container" id="user-container-${UID}">
@@ -54,4 +54,17 @@ let handleUserLeft = async (user) => {
     delete remoteUsers[user.uid]
     document.getElementById(`user-container-${user.uid}`).remove()
 }
+
+let leaveAndRemoveLocalStream = async () => {
+    for(let i = 0; localTracks.length > i; i++){
+        localTracks[i].stop()
+        localTracks[i].close()
+    }
+
+    await client.leave()
+    document.getElementById('join-btn').style.display = 'block'
+    document.getElementById('stream-controls').style.display = 'none'
+    document.getElementById('video-streams').innerHTML = ''
+}
+
 document.getElementById('join-btn').addEventListener('click', joinStream)
