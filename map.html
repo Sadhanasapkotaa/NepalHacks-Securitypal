@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leaflet Map with Polio Centers</title>
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<!-- Leaflet JavaScript -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<!-- Leaflet Routing Machine -->
+<script src="https://cdn.jsdelivr.net/npm/leaflet-routing-machine@5.2.0/dist/leaflet-routing-machine.min.js"></script>
+</head>
+<body>
+<!-- Map container -->
+<div id="map" style="height: 600px;"></div>
+<!-- Your JavaScript code for Leaflet map -->
+<script>
+        var map = L.map('map').setView([51.505, -0.09], 13);
+ 
+        // Add a tile layer for the map (OpenStreetMap)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+ 
+        var userLocation;
+ 
+        // Use geolocation API to get current location
+        if ('geolocation' in navigator) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var userLat = position.coords.latitude;
+                var userLng = position.coords.longitude;
+ 
+                userLocation = L.latLng(userLat, userLng);
+ 
+                // Update map center to user's location
+                map.setView(userLocation, 13);
+ 
+                // Add a marker at the user's location
+                L.marker(userLocation).addTo(map)
+                    .bindPopup("Your Location").openPopup();
+ 
+                // Generate 5 random "Polio Centers" within 2 km radius of user's location
+                var polioCenters = generateRandomPoints(userLocation, 5, 2000);
+ 
+                // Add markers for "Polio Centers" and bind popups
+                for (var i = 0; i < polioCenters.length; i++) {
+                    var marker = L.marker(polioCenters[i]).addTo(map)
+                        .bindPopup("Polio Center " + (i + 1))
+                        .on('click', function(e) {
+                            var clickedCenter = e.latlng;
+                            getDirections(userLocation, clickedCenter);
+                        });
+                }
+            }, function(error) {
+                console.error("Error getting geolocation:", error);
+            });
+        } else {
+            console.log("Geolocation not available");
+        }
+ 
+        // Function to generate random points within a given radius
+        function generateRandomPoints(center, numPoints, radius) {
+            var points = [];
+            for (var i = 0; i < numPoints; i++) {
+                var angle = Math.random() * Math.PI * 2;
+                var distance = Math.sqrt(Math.random()) * radius;
+                var x = center.lat + distance / 111111 * Math.cos(angle);
+                var y = center.lng + distance / 111111 * Math.sin(angle);
+                points.push(L.latLng(x, y));
+            }
+            return points;
+        }
+ 
+        // Function to get directions and display the route
+        function getDirections(start, end) {
+            L.Routing.control({
+                waypoints: [
+                    start,
+                    end
+                ],
+                routeWhileDragging: true
+            }).addTo(map);
+        }
+</script>
+</body>
+</html>
