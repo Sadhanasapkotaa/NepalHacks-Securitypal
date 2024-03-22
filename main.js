@@ -16,3 +16,11 @@ let joinAndDisplayLocalStream = async () =>{
     localTracks[1].play(`user-${UID}`)
     await client.publish([localTracks[0], localTracks[1]])
 }
+let joinStream = async () => {
+    await joinAndDisplayLocalStream()
+    document.getElementById('join-btn').style.display = 'none'
+    document.getElementById('stream-controls').style.display = 'flex'
+    
+}
+
+document.getElementById('join-btn').addEventListener('click', joinStream)
