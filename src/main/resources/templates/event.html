@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Events</title>
+</head>
+<body>
+    <div th:each="event : ${eventList}">
+        <img alt="" th:src="@{'img/' + ${event.image}}" width="400px" height="300px">
+        <h1 th:text="${event.eventname}"></h1><br>
+        <h1 th:text="${event.location}"></h1><br>
+        <h1 th:text="${event.date}"></h1><br>
+        <h1 th:text="${event.time}"></h1><br>
+        <h1 th:text="${event.description}"></h1><br>
+        <h1 th:text="${event.feeStatus}"></h1><br>
+    </div>
+</body>
+</html>

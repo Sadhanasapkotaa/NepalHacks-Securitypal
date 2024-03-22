@@ -1,132 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leaflet Map with Polio Centers</title>
-    
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    
-    <!-- Leaflet JavaScript -->
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
 </head>
 <body>
-    <!-- Map container -->
-    <div id="map" style="height: 600px;"></div>
-    
-    <!-- Search input -->
-    <input type="text" id="searchInput" placeholder="Search for a location">
-    
-    <!-- Search button -->
-    <button id="searchButton">Search</button>
 
-    <!-- Your JavaScript code for Leaflet map -->
-    <script>
-        var map = L.map('map').setView([51.505, -0.09], 13);
+<a href="login">Login</a> <br>
+<a href="signup">Signup</a><br>
+<a href="addEvents">Add Events</a><br>
+<a href="/appointment">Appointment</a>
 
-        // Add a tile layer for the map (OpenStreetMap)
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-
-        // Use geolocation API to get current location
-        function getUserLocation() {
-            if ('geolocation' in navigator) {
-                navigator.geolocation.getCurrentPosition(function(position) {
-                    var userLat = position.coords.latitude;
-                    var userLng = position.coords.longitude;
-
-                    // Update map center to user's location
-                    map.setView([userLat, userLng], 13);
-
-                    // Add a marker at the user's location
-                    L.marker([userLat, userLng]).addTo(map)
-                        .bindPopup("Your Location").openPopup();
-
-                    // Generate 5 random "Polio Centers" within 2 km radius of user's location
-                    var polioCenters = generateRandomPoints({ lat: userLat, lng: userLng }, 5, 2000);
-
-                    // Add markers for "Polio Centers" and bind popups
-                    for (var i = 0; i < polioCenters.length; i++) {
-                        var marker = L.marker(polioCenters[i]).addTo(map)
-                            .bindPopup("Polio Center " + (i + 1));
-                    }
-                }, function(error) {
-                    console.error("Error getting geolocation:", error);
-                });
-            } else {
-                console.log("Geolocation not available");
-            }
-        }
-
-        // Call getUserLocation function to get user's location
-        getUserLocation();
-
-        // Function to generate random points within a given radius
-        function generateRandomPoints(center, numPoints, radius) {
-            var points = [];
-            for (var i = 0; i < numPoints; i++) {
-                var angle = Math.random() * Math.PI * 2;
-                var distance = Math.sqrt(Math.random()) * radius;
-                var x = center.lat + distance / 111111 * Math.cos(angle);
-                var y = center.lng + distance / 111111 * Math.sin(angle);
-                points.push(L.latLng(x, y));
-            }
-            return points;
-        }
-
-        // Function to handle click event on map
-        function onMapClick(e) {
-            L.popup()
-                .setLatLng(e.latlng)
-                .setContent("You clicked the map at " + e.latlng.toString())
-                .openOn(map);
-        }
-
-        // Add click event listener to the map
-        map.on('click', onMapClick);
-
-        // Function to handle search
-        function searchLocation() {
-            var searchTerm = document.getElementById("searchInput").value;
-            if (!searchTerm || searchTerm.trim() === "") {
-                alert("Please enter a valid location to search.");
-                return;
-            }
-
-            // Use Leaflet's built-in geocoding plugin
-            var geocoder = L.Control.geocoder({
-                defaultMarkGeocode: false,
-                collapsed: false,
-                placeholder: "Enter an address",
-            }).addTo(map);
-
-            geocoder.geocode(searchTerm, function(results) {
-                if (results.length > 0) {
-                    var searchResult = results[0].center;
-                    L.marker(searchResult).addTo(map)
-                        .bindPopup(searchTerm).openPopup();
-
-                    // Get directions to the searched location
-                    var directions = L.Routing.control({
-                        waypoints: [
-                            L.latLng(userLocation),
-                            L.latLng(searchResult)
-                        ],
-                        routeWhileDragging: true
-                    }).addTo(map);
-                } else {
-                    alert("Location not found. Please try a different search.");
-                }
-            });
-        }
-
-        // Search button click event listener
-        document.getElementById("searchButton").addEventListener("click", function(event) {
-            event.preventDefault();
-            searchLocation();
-        });
-    </script>
 </body>
 </html>

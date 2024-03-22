@@ -40,7 +40,7 @@ public class eventController {
 	        im.setTime(evd.getTime());
 	        im.setLocation(evd.getLocation());
 	        im.setDescription(evd.getDescription());
-	        im.setFeeStatus(evd.getFeeStatus());
+	        im.setFeeStatus("Free");
 
 	        im.setImage(img.getOriginalFilename());
 
@@ -52,20 +52,22 @@ public class eventController {
 	            try {
 	
 	                File saveDir = new ClassPathResource("static/img").getFile();
-
-	           
 	                Path imagePath = Paths.get(saveDir.getAbsolutePath() + File.separator + img.getOriginalFilename());
-
-
 	                Files.copy(img.getInputStream(), imagePath, StandardCopyOption.REPLACE_EXISTING);
+	                
+	                System.out.println(imagePath);
 
 	            
+	            	List<EventDetails> eventList = eventRepo.findAll();
+	        		model.addAttribute("eventList", eventList);
 	                return "event.html";
+	                
+	                
 	            } catch (Exception e) {
 	             
 	                e.printStackTrace();
 	                model.addAttribute("error", "Failed to upload image");
-	                return "eventdetails.html";
+	                return "eventform.html";
 	            }
 	        }
 	    } catch (Exception e) {
@@ -75,18 +77,28 @@ public class eventController {
 	    }
 
 	  
-	    return "eventdetails.html";
+	    return "eventdform.html";
 	}
+	
+	
 	
 	
 	@GetMapping("/event")
 	
-	public String getEventsDetails(@ModelAttribute EventDetails evt, Model model){
+	public String getEventsDetails(Model model){
 		List<EventDetails> eventList = eventRepo.findAll();
 		model.addAttribute("eventList", eventList);
-		return "eventdetails.html";
+		
+		return "event.html";
 	}
 	
+	@GetMapping("/addEvents")
+	
+	public String addEvebts() {
+		
+		return "eventform.html";
+		
+	}
  	
 
 }

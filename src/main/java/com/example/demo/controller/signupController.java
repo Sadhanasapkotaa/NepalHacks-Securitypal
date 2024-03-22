@@ -22,6 +22,10 @@ public class signupController {
 	public String index() {
 		return "index.html";
 	}
+	@GetMapping("/map")
+	public String map() {
+		return "map.html";
+	}
 
 	
 	@PostMapping("/signupForm")
